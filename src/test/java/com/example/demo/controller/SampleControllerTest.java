@@ -1,15 +1,17 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.ActorDTO;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.junit.jupiter.api.BeforeEach; //
+import org.junit.jupiter.api.Test; //
+import org.mockito.InjectMocks; //
+import org.springframework.beans.factory.annotation.Autowired; //
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest; //
+import org.springframework.test.web.servlet.MockMvc; //
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders; //
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers; //
+import org.springframework.test.web.servlet.setup.MockMvcBuilders; //
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(SampleController.class)
 class SampleControllerTest {
@@ -26,9 +28,9 @@ class SampleControllerTest {
 
     @Test
     void getAllActorsTest() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/hello"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("nima jan"));
+        mockMvc.perform(get("/hello"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("nima jan"));
     }
 
 
