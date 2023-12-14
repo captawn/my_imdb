@@ -28,7 +28,7 @@ class SampleControllerTest {
 
     @Test
     void getAllActorsTest() throws Exception {
-        mockMvc.perform(get("/hello"))
+        mockMvc.perform(get("/test"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("test passed"));
     }
