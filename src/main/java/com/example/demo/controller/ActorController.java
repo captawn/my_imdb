@@ -37,13 +37,13 @@ public class ActorController {
         return actorService.saveActor(ActorDomain);
     }
 
-    @GetMapping("/{ActorId}")
+    @GetMapping("/{actorId}")
     public ActorDTO getActorById(@PathVariable Long ActorId) {
         ActorDomain ActorDomain = actorService.findActorById(ActorId);
         return actorMapperHelper.convertActorDomainToActorDTO(ActorDomain);
     }
 
-    @DeleteMapping("/{ActorId}")
+    @DeleteMapping("/{actorId}")
     public void deleteActorById(@PathVariable Long ActorId) {
         actorService.deleteActorById(ActorId);
     }
