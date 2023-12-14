@@ -19,4 +19,10 @@ public class MovieEntity {
     private Long id;
 
 
+
+    private String name;
+    private int year;
+    private String description;
+    private int duration;
+
 }

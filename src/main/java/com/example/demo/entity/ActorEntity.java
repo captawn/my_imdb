@@ -19,4 +19,10 @@ public class ActorEntity {
     private Long id;
 
 
+    private String name;
+    private int yearOfBirth;
+    private String gender;
+    private String country;
+
+
 }
