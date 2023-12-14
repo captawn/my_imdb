@@ -1,7 +1,6 @@
-package com.example.demo.domain;
+package com.example.demo.dto;
 
 
-import jakarta.persistence.*;
 import lombok.*;
 
 @AllArgsConstructor
@@ -10,7 +9,7 @@ import lombok.*;
 @Setter
 @Builder
 
-public class DirectorDomain {
+public class DirectorDTO {
 
     private Long id;
 

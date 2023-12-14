@@ -1,7 +1,9 @@
-package com.example.demo.domain;
+package com.example.demo.dto;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @AllArgsConstructor
@@ -9,10 +11,11 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
+public class ActorDTO {
 
-public class DirectorDomain {
 
     private Long id;
+
 
     private String name;
     private int yearOfBirth;

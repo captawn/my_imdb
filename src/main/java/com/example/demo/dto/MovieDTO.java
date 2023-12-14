@@ -1,7 +1,9 @@
-package com.example.demo.domain;
+package com.example.demo.dto;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @AllArgsConstructor
@@ -10,7 +12,8 @@ import lombok.*;
 @Setter
 @Builder
 
-public class MovieDomain {
+public class MovieDTO {
+
 
     private Long id;
 

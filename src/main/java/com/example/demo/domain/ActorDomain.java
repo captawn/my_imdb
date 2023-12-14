@@ -11,8 +11,6 @@ import lombok.*;
 @Builder
 public class ActorDomain {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
