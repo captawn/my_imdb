@@ -10,6 +10,6 @@ public class SampleController {
 
     @GetMapping
     public String hi(){
-        return "nima jan";
+        return "test passed";
     }
 }

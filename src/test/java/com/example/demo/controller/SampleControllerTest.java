@@ -30,7 +30,7 @@ class SampleControllerTest {
     void getAllActorsTest() throws Exception {
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("nima jan"));
+                .andExpect(content().string("test passed"));
     }
 
 
