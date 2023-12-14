@@ -37,13 +37,13 @@ public class MovieController {
         return movieService.saveMovie(MovieDomain);
     }
 
-    @GetMapping("/{MovieId}")
+    @GetMapping("/{movieId}")
     public MovieDTO getMovieById(@PathVariable Long MovieId) {
         MovieDomain MovieDomain = movieService.findMovieById(MovieId);
         return MovieMapperHelper.convertMovieDomainToMovieDTO(MovieDomain);
     }
 
-    @DeleteMapping("/{MovieId}")
+    @DeleteMapping("/{movieId}")
     public void deleteMovieById(@PathVariable Long MovieId) {
         movieService.deleteMovieById(MovieId);
     }
