@@ -11,61 +11,26 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-@WebMvcTest(nimaController.class)
-class ActorControllerTest {
+@WebMvcTest(SampleController.class)
+class SampleControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-
     @InjectMocks
-    private nimaController nimaController;
-
+    private SampleController nimaController;
 
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(nimaController).build();
     }
 
-
     @Test
     void getAllActorsTest() throws Exception {
-
         mockMvc.perform(MockMvcRequestBuilders.get("/hello"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("nima jan"));
     }
 
-
-
-
-
-
-
-
-
-    @Test
-    void saveActor() {
-
-    }
-
-    @Test
-    void getActorById() {
-    }
-
-    @Test
-    void deleteActorById() {
-    }
-
-
-    private ActorDTO createSampleActorDTO() {
-        return ActorDTO.builder()
-                .name("John Doe")
-                .yearOfBirth(1990)
-                .gender("Male")
-                .country("USA")
-                .build();
-    }
 
 
 }
