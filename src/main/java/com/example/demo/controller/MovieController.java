@@ -16,35 +16,35 @@ import java.util.List;
 @RequestMapping("/movie")
 public class MovieController {
 
-    private final MovieService MovieService;
+    private final MovieService movieService;
     private final MovieMapperHelper MovieMapperHelper;
 
     @Autowired
-    public MovieController(MovieService MovieService, MovieMapperHelper MovieMapperHelper) {
-        this.MovieService = MovieService;
-        this.MovieMapperHelper = MovieMapperHelper;
+    public MovieController(MovieService MovieService, MovieMapperHelper movieMapperHelper) {
+        this.movieService = MovieService;
+        this.MovieMapperHelper = movieMapperHelper;
     }
 
     @GetMapping
     public List<MovieDTO> getAllMovies() {
-        List<MovieDomain> MovieDomains = MovieService.getAllMovie();
+        List<MovieDomain> MovieDomains = movieService.getAllMovie();
         return MovieMapperHelper.convertMovieDomainListToMovieDTOList(MovieDomains);
     }
 
     @PostMapping
     public Long saveMovie(@RequestBody MovieDTO MovieDTO) {
         MovieDomain MovieDomain = MovieMapperHelper.convertMovieDTOToMovieDomain(MovieDTO);
-        return MovieService.saveMovie(MovieDomain);
+        return movieService.saveMovie(MovieDomain);
     }
 
     @GetMapping("/{MovieId}")
     public MovieDTO getMovieById(@PathVariable Long MovieId) {
-        MovieDomain MovieDomain = MovieService.findMovieById(MovieId);
+        MovieDomain MovieDomain = movieService.findMovieById(MovieId);
         return MovieMapperHelper.convertMovieDomainToMovieDTO(MovieDomain);
     }
 
     @DeleteMapping("/{MovieId}")
     public void deleteMovieById(@PathVariable Long MovieId) {
-        MovieService.deleteMovieById(MovieId);
+        movieService.deleteMovieById(MovieId);
     }
 }
