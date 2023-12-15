@@ -3,7 +3,6 @@ package com.example.demo.mapper;
 import com.example.demo.domain.ActorDomain;
 import com.example.demo.dto.ActorDTO;
 import com.example.demo.entity.ActorEntity;
-import com.example.demo.entity.UserEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 
+import com.example.demo.entity.ActorEntity;
 import com.example.demo.entity.DirectorEntity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,5 +26,6 @@ public class MovieDTO {
     private String description;
     private int duration;
     private List<DirectorDTO> directorDTO;
+    private List<ActorDTO> actorDTOs;
 
 }

@@ -1,8 +1,11 @@
 package com.example.demo.domain;
 
 
+import com.example.demo.entity.MovieEntity;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +20,6 @@ public class ActorDomain {
     private int yearOfBirth;
     private String gender;
     private String country;
-
+    private List<MovieDomain> movieDomains;
 
 }

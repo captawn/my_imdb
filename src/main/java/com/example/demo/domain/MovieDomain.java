@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 
+import com.example.demo.entity.ActorEntity;
 import com.example.demo.entity.DirectorEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,5 +24,6 @@ public class MovieDomain {
     private String description;
     private int duration;
     private List<DirectorDomain> directorDomain;
+    private List<ActorDomain> actorDomains;
 
 }

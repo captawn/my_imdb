@@ -2,11 +2,9 @@ package com.example.demo.mapper;
 
 import com.example.demo.domain.DirectorDomain;
 import com.example.demo.domain.MovieDomain;
-import com.example.demo.dto.DirectorDTO;
 import com.example.demo.dto.MovieDTO;
 import com.example.demo.entity.DirectorEntity;
 import com.example.demo.entity.MovieEntity;
-import com.example.demo.entity.UserEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,11 +19,13 @@ public class MovieMapperHelper {
     private final ObjectMapper mapper;
 
     private final DirectorMapperHelper directorMapperHelper;
+    private final ActorMapperHelper actorMapperHelper;
 
     @Autowired
-    public MovieMapperHelper(ObjectMapper mapper,DirectorMapperHelper directorMapperHelper) {
+    public MovieMapperHelper(ObjectMapper mapper,DirectorMapperHelper directorMapperHelper,ActorMapperHelper actorMapperHelper) {
         this.mapper = mapper;
         this.directorMapperHelper = directorMapperHelper;
+        this.actorMapperHelper = actorMapperHelper;
     }
 
     public List<MovieDomain> convertMovieEntityListToMovieDomainList(List<MovieEntity> MovieEntities) {
@@ -85,6 +85,7 @@ public class MovieMapperHelper {
                 .description(MovieEntity.getDescription())
                 .duration(MovieEntity.getDuration())
                 .directorDomain(directorMapperHelper.convertDirectorEntityListToDirectorDomainList(MovieEntity.getDirectorEntity()))
+                .actorDomains(actorMapperHelper.convertActorEntityListToActorDomainList(MovieEntity.getActorEntities()))
                 .build();
         return domain;
 

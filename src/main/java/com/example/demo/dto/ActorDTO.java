@@ -1,10 +1,13 @@
 package com.example.demo.dto;
 
 
+import com.example.demo.entity.MovieEntity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,6 +26,7 @@ public class ActorDTO {
     private int yearOfBirth;
     private String gender;
     private String country;
+    private List<MovieDTO> movieDTOs;
 
 
 }
