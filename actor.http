@@ -1,0 +1,20 @@
+
+###
+POST http://localhost:1236/actor
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "John Doe",
+  "yearOfBirth": 1990,
+  "gender": "Male",
+  "country": "USA"
+}
+###
+GET http://localhost:1236/actor
+
+###
+GET http://localhost:1236/actor/1
+
+###
+DELETE http://localhost:1236/actor/1
