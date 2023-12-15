@@ -56,8 +56,10 @@ public class DirectorMapperHelper {
     public DirectorDomain convertDirectorEntityToDirectorDomain(DirectorEntity DirectorEntity) {
         DirectorDomain domain = DirectorDomain.builder().
                 id(DirectorEntity.getId())
-//                .DirectorNumber(DirectorEntity.getDirectorNumber())
-//                .user(userMapperHelper.convertUserEntityToUserDomain(DirectorEntity.getUserEntity()))
+                .name(DirectorEntity.getName())
+                .yearOfBirth(DirectorEntity.getYearOfBirth())
+                .gender(DirectorEntity.getGender())
+                .country(DirectorEntity.getCountry())
                 .build();
 
         return domain;

@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-
+@ToString
 public class DirectorDomain {
 
     private Long id;

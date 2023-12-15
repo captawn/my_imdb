@@ -1,0 +1,19 @@
+POST http://localhost:1236/director
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "John Doe",
+  "yearOfBirth": 1990,
+  "gender": "Male",
+  "country": "USA"
+}
+
+###
+GET http://localhost:1236/director
+
+###
+GET http://localhost:1236/director/1
+
+###
+DELETE http://localhost:1236/director/1

@@ -15,15 +15,13 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.client.ExpectedCount.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(ActorController.class)
 @ComponentScan(basePackageClasses = ActorMapperHelper.class)
 //@Import({ActorMapperHelper.class})
-class AccountControllerTest {
+class ActorControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

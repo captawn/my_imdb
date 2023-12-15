@@ -11,10 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/director")
 public class DirectorController {
+
+    private static final Logger logger = LoggerFactory.getLogger(DirectorController.class);
 
     private final DirectorService directorService;
     private final DirectorMapperHelper DirectorMapperHelper;
@@ -27,24 +31,32 @@ public class DirectorController {
 
     @GetMapping
     public List<DirectorDTO> getAllDirectors() {
+        logger.info("Received request to get all directors.");
         List<DirectorDomain> DirectorDomains = directorService.getAllDirector();
         return DirectorMapperHelper.convertDirectorDomainListToDirectorDTOList(DirectorDomains);
     }
 
     @PostMapping
-    public Long saveDirector(@RequestBody DirectorDTO DirectorDTO) {
-        DirectorDomain DirectorDomain = DirectorMapperHelper.convertDirectorDTOToDirectorDomain(DirectorDTO);
-        return directorService.saveDirector(DirectorDomain);
+    public Long saveDirector(@RequestBody DirectorDTO directorDTO) {
+        logger.info("Received request to save directorDTO: {}", directorDTO.toString());
+        DirectorDomain directorDomain = DirectorMapperHelper.convertDirectorDTOToDirectorDomain(directorDTO);
+        logger.info("Received request to save director Domain: {}", directorDomain.toString());
+        Long directorId = directorService.saveDirector(directorDomain);
+        logger.info("Received director Id: {}", directorId);
+        return directorId;
+
     }
 
     @GetMapping("/{directorId}")
-    public DirectorDTO getDirectorById(@PathVariable Long DirectorId) {
-        DirectorDomain DirectorDomain = directorService.findDirectorById(DirectorId);
+    public DirectorDTO getDirectorById(@PathVariable Long directorId) {
+        logger.info("Received request to get director by ID: {}", directorId);
+        DirectorDomain DirectorDomain = directorService.findDirectorById(directorId);
         return DirectorMapperHelper.convertDirectorDomainToDirectorDTO(DirectorDomain);
     }
 
     @DeleteMapping("/{directorId}")
-    public void deleteDirectorById(@PathVariable Long DirectorId) {
-        directorService.deleteDirectorById(DirectorId);
+    public void deleteDirectorById(@PathVariable Long directorId) {
+        logger.info("Received request to delete director by ID: {}", directorId);
+        directorService.deleteDirectorById(directorId);
     }
 }
