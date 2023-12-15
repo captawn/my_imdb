@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 
+import com.example.demo.entity.MovieEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,6 +19,7 @@ public class DirectorDomain {
     private int yearOfBirth;
     private String gender;
     private String country;
+    private MovieDomain movieDomain;
 
 
 }

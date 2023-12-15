@@ -26,7 +26,9 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<MovieDomain> getAllMovie() {
         List<MovieEntity> MovieEntities = MovieRepository.findAll();
-        return MovieMapperHelper.convertMovieEntityListToMovieDomainList(MovieEntities);
+        List<MovieDomain> movieDomains = MovieMapperHelper.convertMovieEntityListToMovieDomainList(MovieEntities);
+        return movieDomains;
+
     }
 
     @Override

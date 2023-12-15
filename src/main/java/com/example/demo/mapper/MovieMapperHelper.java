@@ -1,5 +1,6 @@
 package com.example.demo.mapper;
 
+import com.example.demo.domain.DirectorDomain;
 import com.example.demo.domain.MovieDomain;
 import com.example.demo.dto.MovieDTO;
 import com.example.demo.entity.MovieEntity;
@@ -17,9 +18,12 @@ public class MovieMapperHelper {
 
     private final ObjectMapper mapper;
 
+    private final DirectorMapperHelper directorMapperHelper;
+
     @Autowired
-    public MovieMapperHelper(ObjectMapper mapper) {
+    public MovieMapperHelper(ObjectMapper mapper,DirectorMapperHelper directorMapperHelper) {
         this.mapper = mapper;
+        this.directorMapperHelper = directorMapperHelper;
     }
 
     public List<MovieDomain> convertMovieEntityListToMovieDomainList(List<MovieEntity> MovieEntities) {
@@ -35,7 +39,17 @@ public class MovieMapperHelper {
     }
 
     public MovieDTO convertMovieDomainToMovieDTO(MovieDomain MovieDomain) {
-        return mapper.convertValue(MovieDomain, MovieDTO.class);
+//        return mapper.convertValue(MovieDomain, MovieDTO.class);
+        MovieDTO build = MovieDTO.builder()
+                .id(MovieDomain.getId())
+                .name(MovieDomain.getName())
+                .year(MovieDomain.getYear())
+                .description(MovieDomain.getDescription())
+                .duration(MovieDomain.getDuration())
+                .directorDTO(directorMapperHelper.convertDirectorDomainToDirectorDTO(MovieDomain.getDirectorDomain()))
+                .build();
+        return build;
+
     }
 
     public MovieEntity convertMovieDomainToMovieEntity(MovieDomain MovieDomain) {
@@ -62,8 +76,8 @@ public class MovieMapperHelper {
                 .year(MovieEntity.getYear())
                 .description(MovieEntity.getDescription())
                 .duration(MovieEntity.getDuration())
+                .directorDomain(directorMapperHelper.convertDirectorEntityToDirectorDomain(MovieEntity.getDirectorEntity()))
                 .build();
-
         return domain;
 
 

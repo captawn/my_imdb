@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,9 +24,10 @@ public class DirectorEntity {
     private String gender;
     private String country;
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "MOVIE_ID")
-    private MovieEntity movie;
+    @JsonBackReference
+    private MovieEntity movieEntity;
 
 
 }

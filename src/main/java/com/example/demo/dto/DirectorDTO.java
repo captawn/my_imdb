@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 
+import com.example.demo.entity.MovieEntity;
 import lombok.*;
 
 @AllArgsConstructor
@@ -18,6 +19,7 @@ public class DirectorDTO {
     private int yearOfBirth;
     private String gender;
     private String country;
+    private MovieDTO movieDTO;
 
 
 }
