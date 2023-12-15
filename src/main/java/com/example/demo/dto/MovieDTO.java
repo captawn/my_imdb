@@ -11,14 +11,12 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
+@ToString
 
 public class MovieDTO {
 
 
     private Long id;
-
-
-
     private String name;
     private int year;
     private String description;

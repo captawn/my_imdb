@@ -9,11 +9,10 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
+@ToString
 public class ActorDomain {
 
     private Long id;
-
-
     private String name;
     private int yearOfBirth;
     private String gender;

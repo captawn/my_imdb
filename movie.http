@@ -1,0 +1,20 @@
+POST http://localhost:1236/movie
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "The Great Movie",
+  "year": 2023,
+  "description": "An amazing movie",
+  "duration": 120
+}
+
+
+###
+GET http://localhost:1236/movie
+
+###
+GET http://localhost:1236/movie/1
+
+###
+DELETE http://localhost:1236/movie/1

@@ -48,7 +48,7 @@ public class MovieMapperHelper {
 //        }
 
 //        return MovieEntity;
-    return null;
+    return MovieEntity;
     }
 
     public MovieDomain convertMovieDTOToMovieDomain(MovieDTO MovieDTO) {
@@ -58,8 +58,10 @@ public class MovieMapperHelper {
     public MovieDomain convertMovieEntityToMovieDomain(MovieEntity MovieEntity) {
         MovieDomain domain = MovieDomain.builder().
                 id(MovieEntity.getId())
-//                .MovieNumber(MovieEntity.getMovieNumber())
-//                .user(userMapperHelper.convertUserEntityToUserDomain(MovieEntity.getUserEntity()))
+                .name(MovieEntity.getName())
+                .year(MovieEntity.getYear())
+                .description(MovieEntity.getDescription())
+                .duration(MovieEntity.getDuration())
                 .build();
 
         return domain;
