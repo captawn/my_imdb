@@ -9,7 +9,7 @@ Content-Type: application/json
   "duration": 120,
   "directorDTO": [
     {
-      "id": 1,
+      "id": null,
       "name": "asgahr farhadi",
       "yearOfBirth": 1340,
       "gender": "male",
@@ -17,7 +17,7 @@ Content-Type: application/json
       "movieDTO": null
     },
     {
-      "id": 1,
+      "id": null,
       "name": "kianian",
       "yearOfBirth": 1340,
       "gender": "male",
