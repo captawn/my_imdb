@@ -2,7 +2,9 @@ package com.example.demo.mapper;
 
 import com.example.demo.domain.DirectorDomain;
 import com.example.demo.domain.MovieDomain;
+import com.example.demo.dto.DirectorDTO;
 import com.example.demo.dto.MovieDTO;
+import com.example.demo.entity.DirectorEntity;
 import com.example.demo.entity.MovieEntity;
 import com.example.demo.entity.UserEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -46,7 +48,7 @@ public class MovieMapperHelper {
                 .year(MovieDomain.getYear())
                 .description(MovieDomain.getDescription())
                 .duration(MovieDomain.getDuration())
-                .directorDTO(directorMapperHelper.convertDirectorDomainToDirectorDTO(MovieDomain.getDirectorDomain()))
+                .directorDTO(directorMapperHelper.convertDirectorDomainListToDirectorDTOList(MovieDomain.getDirectorDomain()))
                 .build();
         return build;
 
@@ -55,18 +57,24 @@ public class MovieMapperHelper {
     public MovieEntity convertMovieDomainToMovieEntity(MovieDomain MovieDomain) {
         MovieEntity MovieEntity = mapper.convertValue(MovieDomain, MovieEntity.class);
 
-        // Manually set the UserEntity for the MovieEntity
-//        if (MovieDomain.getUser() != null) {
-//            UserEntity userEntity = mapper.convertValue(MovieDomain.getUser(), UserEntity.class);
-//            MovieEntity.setUserEntity(userEntity);
-//        }
+        if (MovieDomain.getDirectorDomain() != null) {
+            List<DirectorDomain> directorDomain = MovieDomain.getDirectorDomain();
+            List<DirectorEntity> directorEntityList = directorMapperHelper.convertDirectorDomainListToDirectorEntityList(directorDomain);
+            MovieEntity.setDirectorEntity(directorEntityList);
 
-//        return MovieEntity;
-    return MovieEntity;
+        }
+        return MovieEntity;
     }
 
-    public MovieDomain convertMovieDTOToMovieDomain(MovieDTO MovieDTO) {
-        return mapper.convertValue(MovieDTO, MovieDomain.class);
+    public MovieDomain convertMovieDTOToMovieDomain(MovieDTO movieDTO) {
+        MovieDomain movieDomain = mapper.convertValue(movieDTO, MovieDomain.class);
+
+        if (movieDTO.getDirectorDTO() != null) {
+            List<DirectorDomain> directorDomainList = directorMapperHelper.convertDirectorDTOListToDirectorDomainList(movieDTO.getDirectorDTO());
+            movieDomain.setDirectorDomain(directorDomainList);
+        }
+        return movieDomain;
+
     }
 
     public MovieDomain convertMovieEntityToMovieDomain(MovieEntity MovieEntity) {
@@ -76,7 +84,7 @@ public class MovieMapperHelper {
                 .year(MovieEntity.getYear())
                 .description(MovieEntity.getDescription())
                 .duration(MovieEntity.getDuration())
-                .directorDomain(directorMapperHelper.convertDirectorEntityToDirectorDomain(MovieEntity.getDirectorEntity()))
+                .directorDomain(directorMapperHelper.convertDirectorEntityListToDirectorDomainList(MovieEntity.getDirectorEntity()))
                 .build();
         return domain;
 

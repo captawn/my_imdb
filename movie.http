@@ -3,10 +3,28 @@ Content-Type: application/json
 
 {
   "id": null,
-  "name": "The Great Movie",
-  "year": 2023,
-  "description": "An amazing movie",
-  "duration": 120
+  "name": "jodaee nader az simin ",
+  "year": 1400,
+  "description": "chos nale",
+  "duration": 120,
+  "directorDTO": [
+    {
+      "id": 1,
+      "name": "asgahr farhadi",
+      "yearOfBirth": 1340,
+      "gender": "male",
+      "country": "iran",
+      "movieDTO": null
+    },
+    {
+      "id": 1,
+      "name": "kianian",
+      "yearOfBirth": 1340,
+      "gender": "male",
+      "country": "iran",
+      "movieDTO": null
+    }
+  ]
 }
 
 

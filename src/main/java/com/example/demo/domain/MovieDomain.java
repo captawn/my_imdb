@@ -5,6 +5,8 @@ import com.example.demo.entity.DirectorEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -20,6 +22,6 @@ public class MovieDomain {
     private int year;
     private String description;
     private int duration;
-    private DirectorDomain directorDomain;
+    private List<DirectorDomain> directorDomain;
 
 }

@@ -24,9 +24,8 @@ public class DirectorEntity {
     private String gender;
     private String country;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "MOVIE_ID")
-    @JsonBackReference
     private MovieEntity movieEntity;
 
 

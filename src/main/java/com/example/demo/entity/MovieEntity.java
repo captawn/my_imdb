@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Movie",schema = "MV")
 @AllArgsConstructor
@@ -26,9 +28,8 @@ public class MovieEntity {
     private String description;
     private int duration;
 
-    @OneToOne(mappedBy = "movieEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private DirectorEntity directorEntity;
+    @OneToMany(mappedBy = "movieEntity", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<DirectorEntity> directorEntity;
 
 
 }

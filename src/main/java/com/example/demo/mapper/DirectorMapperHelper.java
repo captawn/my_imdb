@@ -15,10 +15,12 @@ public class DirectorMapperHelper {
 
 
     private final ObjectMapper mapper;
+//    private final MovieMapperHelper movieMapperHelper;
 
     @Autowired
-    public DirectorMapperHelper(ObjectMapper mapper) {
+    public DirectorMapperHelper(ObjectMapper mapper/*, MovieMapperHelper movieMapperHelper*/) {
         this.mapper = mapper;
+//        this.movieMapperHelper = movieMapperHelper;
     }
 
     public List<DirectorDomain> convertDirectorEntityListToDirectorDomainList(List<DirectorEntity> DirectorEntities) {
@@ -31,6 +33,13 @@ public class DirectorMapperHelper {
         return DirectorDomains.stream()
                 .map(this::convertDirectorDomainToDirectorDTO)
                 .collect(Collectors.toList());
+    }
+
+    public List<DirectorEntity> convertDirectorDomainListToDirectorEntityList(List<DirectorDomain> directorDomains) {
+        List<DirectorEntity> directorEntityList = directorDomains.stream()
+                .map(this::convertDirectorDomainToDirectorEntity)
+                .collect(Collectors.toList());
+        return directorEntityList;
     }
 
     public DirectorDTO convertDirectorDomainToDirectorDTO(DirectorDomain DirectorDomain) {
@@ -53,6 +62,13 @@ public class DirectorMapperHelper {
         return mapper.convertValue(DirectorDTO, DirectorDomain.class);
     }
 
+    public List<DirectorDomain> convertDirectorDTOListToDirectorDomainList(List <DirectorDTO> directorDTO) {
+        List<DirectorDomain> directorDomainList = directorDTO.stream()
+                .map(this::convertDirectorDTOToDirectorDomain)
+                .collect(Collectors.toList());
+        return directorDomainList;
+    }
+
     public DirectorDomain convertDirectorEntityToDirectorDomain(DirectorEntity DirectorEntity) {
         DirectorDomain domain = DirectorDomain.builder().
                 id(DirectorEntity.getId())
@@ -60,6 +76,7 @@ public class DirectorMapperHelper {
                 .yearOfBirth(DirectorEntity.getYearOfBirth())
                 .gender(DirectorEntity.getGender())
                 .country(DirectorEntity.getCountry())
+//                .movieDomain(movieMapperHelper.convertMovieEntityToMovieDomain(DirectorEntity.getMovieEntity()))
                 .build();
 
         return domain;

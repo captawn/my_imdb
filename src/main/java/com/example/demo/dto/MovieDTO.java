@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,6 +24,6 @@ public class MovieDTO {
     private int year;
     private String description;
     private int duration;
-    private DirectorDTO directorDTO;
+    private List<DirectorDTO> directorDTO;
 
 }
