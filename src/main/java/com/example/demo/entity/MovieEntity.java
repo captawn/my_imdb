@@ -18,11 +18,13 @@ public class MovieEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-
     private String name;
     private int year;
     private String description;
     private int duration;
+
+    @OneToOne(mappedBy = "movie")
+    private DirectorEntity director;
+
 
 }
