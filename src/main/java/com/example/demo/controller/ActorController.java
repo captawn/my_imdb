@@ -38,13 +38,13 @@ public class ActorController {
     }
 
     @GetMapping("/{actorId}")
-    public ActorDTO getActorById(@PathVariable Long ActorId) {
-        ActorDomain ActorDomain = actorService.findActorById(ActorId);
+    public ActorDTO getActorById(@PathVariable Long actorId) {
+        ActorDomain ActorDomain = actorService.findActorById(actorId);
         return actorMapperHelper.convertActorDomainToActorDTO(ActorDomain);
     }
 
     @DeleteMapping("/{actorId}")
-    public void deleteActorById(@PathVariable Long ActorId) {
-        actorService.deleteActorById(ActorId);
+    public void deleteActorById(@PathVariable Long actorId) {
+        actorService.deleteActorById(actorId);
     }
 }
