@@ -4,6 +4,8 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "ACTOR",schema = "MV")
 @AllArgsConstructor
@@ -25,4 +27,6 @@ public class ActorEntity {
     private String country;
 
 
+    @ManyToMany(mappedBy = "actorEntities")
+    private List<MovieEntity> movieEntities;
 }

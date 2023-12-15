@@ -31,5 +31,11 @@ public class MovieEntity {
     @OneToMany(mappedBy = "movieEntity", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<DirectorEntity> directorEntity;
 
-
+    @ManyToMany
+    @JoinTable(
+            name = "MOVIE_ACTOR",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
+    )
+    private List<ActorEntity> actorEntities;
 }
